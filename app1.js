@@ -10,9 +10,15 @@ const meetContraints = (rows, column, solution) => {
     return true;
 }
 
+
+const solve_Nqueens = (n) => {
+  const init = [[]];
+  const totalSolutions = eachRow(0, n, init);
+  return totalSolutions;
+}
+
+
 //Function to loop through all column in a row 
-
-
 const eachRow = (row, columns, prevSolutions) => {
 
     let newSolutions = [];
@@ -40,15 +46,6 @@ const eachRow = (row, columns, prevSolutions) => {
 };
 
 
-
-
-const solve_Nqueens = (n) => {
-    const init = [[]];
-    const totalSolutions = eachRow(0, n, init);
-    return totalSolutions;
-}
-
-
 //Draw chess board function
 
 const drawBoard = (n, randomSol) => {
@@ -60,7 +57,7 @@ const queen = {
 };
 
 ///// Draw
-const boxSize = 50,
+const boxSize = 60,
  boardDimension = n,
  boardSize = boardDimension * boxSize,
  margin = 100;
@@ -108,11 +105,18 @@ for (let i = 0; i < 8; i++) {
 }
 }
 
-const nQueens = solve_Nqueens(4);
-// Generate a whole random number between 0 and nQueens.length (exclusive)
-const randomSolution = () => { 
- return Math.floor(Math.random()*nQueens.length);
-}
-let random = randomSolution();
-drawBoard(4, random);
 
+var nQueens = solve_Nqueens(4);
+function myfun(){
+  document.getElementById("chessboard").style.textAlign = "center";
+  var x = document.getElementById("inp").value;
+
+  nQueens = solve_Nqueens(x);
+  // Generate a whole random number between 0 and nQueens.length (exclusive)
+  const randomSolution = () => { 
+   return Math.floor(Math.random()*nQueens.length);
+  }
+  let random = randomSolution();
+  drawBoard(x, random);
+
+};
